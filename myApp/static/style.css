@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.navbar 
+{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar-brand 
+{
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    color: whitesmoke; 
+    text-transform: uppercase; 
+    transition: color 0.2s; 
+}
+
+.brand-icon 
+{
+    font-size: 1.5rem;
+}
+
+.nav-item .nav-link 
+{
+    font-weight: 600; 
+    color: #ddd; 
+    transition: color 0.2s; 
+}
+
+.nav-item .nav-link i 
+{
+    margin-right: 0.5rem; 
+}
+
+.login-link:hover, .signup-link:hover, .logout-link:hover
+{
+    color: white; 
+    background-color: #555; 
+    border-radius: 5px; 
+    text-decoration: none; 
+}
+
+.content
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+    text-align: left;
+    margin-top: 100px;
+    width: 45%;
+}
+
+.title
+{
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    color: black;
+}
+
+.tabs 
+{
+    display: flex;
+    justify-content: stretch;
+    background-color: #282c34;
+    margin: 0 -15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.tab-content 
+{
+    flex-grow: 1;
+    text-align: center;
+    padding: 0.8rem 0;
+    font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    background: transparent;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    border-right: 1px solid #444;
+}
+
+.tab-content:last-child 
+{
+    border-right: none;
+}
+
+.tab-content.active 
+{
+    font-weight: bold;
+    color: #007bff;
+    border-bottom: 3px solid #007bff;
+}
+
+.tab-content:hover 
+{
+    background-color: #3a3f47;
+    color: #ddd;
+    text-decoration: none;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) 
+{
+    .tabs 
+    {
+        flex-direction: column;
+    }
+
+    .tab-content 
+    {
+        margin: 0.5rem 0;
+    }
+}
+

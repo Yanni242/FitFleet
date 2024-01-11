@@ -1,0 +1,111 @@
+/* Body Style */
+body
+{
+    background: url('authBackground.webp');
+    background-size: 45%; 
+    background-repeat: repeat;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Authentication Container */
+.auth-container
+{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    margin: 20px;
+}
+
+/* Form Group Style */
+.form-group
+{
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Label Style */
+label
+{
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="password"],
+input[type="email"]
+{
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #007BFF;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus
+{
+    outline: none;
+    border-color: darken(#007BFF, 10%);
+}
+
+/* Button Style */
+button
+{
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    margin-top: 10px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button:hover
+{
+    background-color: darken(#007BFF, 10%);
+}
+
+/* Link Style in Auth Container */
+.auth-container a
+{
+    display: inline-block;
+    margin-top: 15px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a
+{
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+/* Error Message Style */
+.error p
+{
+    color: red;
+    font-size: 0.9em;
+    margin: 5px 0;
+}

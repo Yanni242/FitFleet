@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel = "stylesheet" href = "{% static 'indexStyle.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section id = "hero">
+    <div class = "container">
+        <h1>Welcome to FitFleet</h1>
+        <p>Your ultimate companion in your fitness journey.</p>
+    </div>
+</section>
+
+<!-- About FitFleet -->
+<section id = "about">
+    <div class = "container">
+      <h2>About FitFleet</h2>
+      <div class = "row">
+        <div class = "col-md-6">
+          <img src = "{% static 'group.jpg' %}" alt = "groupImage" class = "img-fluid">
+        </div>
+        <div class = "col-md-6">
+          <br><br>
+          <p>Welcome to FitFleet, your ultimate partner in your fitness journey. We offer personalized fitness plans, expert advice, and a supportive community to help you achieve your health goals.</p>
+          <p>Founded with the vision of aiding every individual's fitness journey, FitFleet offers comprehensive tools and insights for a healthier life.</p>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Why Join Section -->
+<section id = "why-join">
+  <div class = "container">
+      <h2>Why Use FitFleet?</h2>
+      <div class = "row">
+          <div class = "col-md-4 why-item">
+              <h3>Comprehensive Fitness Tracking</h3>
+              <p>Utilize our BMI Calculator, Calorie Intake Calculator, and Weight Loss/Gain Tracker to stay informed and motivated throughout your fitness journey.</p>
+          </div>
+          <div class = "col-md-4 why-item">
+              <h3>Customized Workout Experience</h3>
+              <p>Access our diverse Exercise Database with videos, offering personalized routines that fit your lifestyle and fitness level.</p>
+          </div>
+          <div class = "col-md-4 why-item">
+              <h3>Evidence-Based Fitness Guidance</h3>
+              <p>Make informed decisions with our scientifically-backed tools and resources, ensuring a safe and effective approach to fitness and nutrition.</p>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Features Overview -->
+<section id = "features">
+  <div class = "container">
+    <h2>Our Features</h2>
+    <div class = "row">
+      <div class = "col-md-3 feature-box">
+        <i class = "icon">📏</i>
+        <a href = "{% url 'bmi' %}"><h3>BMI Calculator & Tracker</h3></a>
+        <p>Monitor and track your Body Mass Index for a healthier lifestyle.</p>
+      </div>
+      <div class = "col-md-3 feature-box">
+        <i class = "icon">🍎</i>
+        <a href="{% url 'calorie' %}"><h3>Calorie Intake Calculator</h3></a>
+        <p>Calculate your daily caloric needs to meet your fitness goals.</p>
+      </div>
+      <div class = "col-md-3 feature-box">
+        <i class = "icon">⚖️</i>
+        <a href = "{% url 'weight' %}"><h3>Weight Loss/Gain Tracker</h3></a>
+        <p>Track your weight loss or gain journey and stay motivated.</p>
+      </div>
+      <div class = "col-md-3 feature-box">
+        <i class = "icon">🏋️</i>
+        <a href = "{% url 'exercises' %}"><h3>Exercise Database w/ Videos</h3></a>
+        <p>Access a variety of exercises to spice up your workout routine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Signup -->
+<section id = "newsletter">
+    <div class = "container">
+      <h3>Join Our Newsletter</h3>
+      <p>Get the latest fitness tips, diet plans, and exclusive offers right in your inbox.</p>
+      <form action = "your_signup_script.php">
+        <input type = "email" placeholder = "Enter your email" required>
+        <button type = "submit" class = "btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+<!-- Footer -->
+<footer>
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-md-4">
+          <button onclick = "window.scrollTo({top: 0, behavior: 'smooth'});" class = "btn-back-top">Back to the Top</button>
+        </div>
+        <div class = "col-md-4 text-center">
+          <p>&copy; 2023 FitFleet. All rights reserved.</p>
+          <p>Designed and developed by Yanni Turnquest</p>
+        </div>
+        <div class = "col-md-4 text-right">
+          <h5>Contact Us</h5>
+          <p>Email: fitfleet@gmail.com</p>
+        </div>
+      </div>
+    </div>
+</footer>
+
+{% endblock %}

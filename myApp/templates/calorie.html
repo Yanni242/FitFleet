@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+
+<link rel = "stylesheet" href = "{% static 'calorieStyle.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class = "calorie-section">
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-md-6 col-sm-12 col-xs-12">
+                <div class = "tab-calorie">
+                    <h3>Calorie Intake Calculator</h3>
+                    <div class = "tab">
+                        <button class = "tablinks" onclick = "openUnit(event, 'metric')">Metric units</button>
+                        <button class = "tablinks" onclick = "openUnit(event, 'imperial')">Imperial units</button>
+                    </div>
+
+            <div class = "tabcontent" id = "metric">
+                <form method = "post">
+                    {% csrf_token %}
+                    <div class = "col-12 my-3">
+                        <label for = "">Age (15 - 80): </label>
+                        <input type = "text" name = "age" class = "form-control" required placeholder = "Ex. 23">
+                    </div>
+
+                    <div class = "col-12 my-3">
+                        <label for = "">Weight: </label>
+                        <input type = "text" name = "weight-metric" class = "form-control" required placeholder = "kg">
+                    </div>
+
+                    <div class = "col-12 my-3">
+                        <label for = "">Height: </label>
+                        <input type = "text" name = "height-metric" class = "form-control" required placeholder = "cm">
+                    </div>
+
+                    <div class = "col-12 my-3">
+                        <label for = "">Gender: </label>
+                        <div>
+                            <input type = "radio" id = "male" name = "gender" value = "male">
+                            <label for = "male">Male</label><br>
+                            <input type = "radio" id = "female" name = "gender" value = "female">
+                            <label for = "female">Female</label><br>
+                        </div>
+                    </div>
+                    
+                    <div class = "col-12 my-3">
+                        <label for = "activity-level">Activity Level: </label>
+                        <select id = "activity-level" name = "activity-level">
+                            <option value = "sedentary">Sedentary: little or no exercise</option>
+                            <option value = "light">Light: exercise 1-3 times per week</option>
+                            <option value = "moderate">Moderate: exercise 4-5 times per week</option>
+                            <option value = "active">Active: daily exercise or intense exercise 3-4 times per week</option>
+                            <option value = "very-active">Very Active: intense exercise 6-7 times per week</option>
+                            <option value = "extra-active">Extra Active: very intense exercise daily or physical job</option>
+                        </select>
+                    </div>
+                    
+                    <button type = "submit" name = "btn btn-primary" action = "{%url 'home' %}">Calculate</button>
+                </form>    
+            </div>
+
+            <div class = "tabcontent" id = "imperial">
+                <form method = "post">
+                    {% csrf_token %}
+                    <div class = "col-12 my-3">
+                        <label for = "">Age (15 - 80): </label>
+                        <input type = "text" name = "age" class = "form-control" required placeholder = "Ex. 23">
+                    </div>
+
+                    <div class = "col-12 my-3">
+                        <label for = "">Weight: </label>
+                        <input type = "text" name = "weight-imperial" class = "form-control" required placeholder = "lbs">
+                    </div>
+
+                    <div class = "col-12 my-3">
+                        <label for = "">Height: </label>
+                        <div class = "input-group">
+                            <input type = "text" name = "feet" placeholder = "feet" class = "form-control">
+                            <input type = "text" name = "inches" placeholder = "inches" class = "form-control">
+                        </div>
+                    </div>
+
+                    <div class = "col-12 my-3">
+                        <label for = "">Gender: </label>
+                        <div>
+                            <input type = "radio" id = "male" name = "gender" value = "male">
+                            <label for = "male">Male</label><br>
+                            <input type = "radio" id = "female" name = "gender" value = "female">
+                            <label for = "female">Female</label><br>
+                        </div>
+                    </div>
+                    
+                    <div class = "col-12 my-3">
+                        <label for = "activity-level">Activity Level: </label>
+                        <select id = "activity-level" name = "activity-level">
+                            <option value = "sedentary">Sedentary: little or no exercise</option>
+                            <option value = "light">Light: exercise 1-3 times per week</option>
+                            <option value = "moderate">Moderate: exercise 4-5 times per week</option>
+                            <option value = "active">Active: daily exercise or intense exercise 3-4 times per week</option>
+                            <option value = "very-active">Very Active: intense exercise 6-7 times per week</option>
+                            <option value = "extra-active">Extra Active: very intense exercise daily or physical job</option>
+                        </select>
+                    </div>
+                    
+                    <button type = "submit" name = "btn btn-primary" action = "{%url 'home' %}">Calculate</button>
+                </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class = "col-md-6 col-sm-12 col-xs-12" id = "info-section">
+            <div class = "calorie-info">
+                <h2>Understanding Caloric Intake</h2>
+                <p>Caloric intake is the total amount of calories you consume daily. It's crucial for maintaining, losing, or gaining weight.</p>
+            </div>
+        
+            <div class = "nutrition-tips">
+                <h2>Nutrition Tips</h2>
+                <ul>
+                    <li>Eat a balanced diet rich in fruits, vegetables, whole grains, and lean proteins.</li>
+                    <li>Monitor your calorie intake to align with your fitness goals.</li>
+                    <li>Understand the importance of macronutrients: carbs, proteins, and fats.</li>
+                </ul>
+            </div>
+        
+            <div class = "calorie-faq">
+                <h2>Frequently Asked Questions</h2>
+                <p><strong>What are macros?</strong> Macros, or macronutrients, include carbohydrates, proteins, and fats - essential for body functioning.</p>
+                <p><strong>How many calories should I consume?</strong> Caloric needs vary based on age, gender, activity level, and fitness goals.</p>
+            </div>
+        </div>    
+
+        {% if calorie_intake %}
+        <div class = "results-container" id = "results">
+            <h2 class = "results-heading">Results</h2>
+            <div class = "row">
+                <div class = "col-12">
+                    <h2>Maintenance</h2>
+                    <div class = "result-box">
+                        <p>Maintain Weight: {{ calorie_intake }} calories</p>
+                    </div>
+                    <h2>Bulking</h2>
+                    <div class = "result-box">
+                        <p>Mild Weight Gain (0.5lb/week): {{ calorie_intake|add:"+250" }} calories</p>
+                        <p>Weight Gain (1lb/week): {{ calorie_intake|add:"+500" }} calories</p>
+                        <p>Extreme Weight Gain (2lb/week): {{ calorie_intake|add:"+1000" }} calories</p>
+                    </div>
+                    <h2>Cutting</h2>
+                    <div class = "result-box">
+                        <p>Mild Weight Loss (0.5lb/week): {{ calorie_intake|add:"-250" }} calories</p>
+                        <p>Weight Loss (1lb/week): {{ calorie_intake|add:"-500" }} calories</p>
+                        <p>Extreme Weight Loss (2lb/week): {{ calorie_intake|add:"-1000" }} calories</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section for Macro Diet Suggestions -->
+            <div class = "row macro-section">
+
+                <div class = "container-fluid text-center">
+                    <h2>Suggested Macro Nutrients for Maintenance</h2>
+                </div>
+                
+                <!-- Moderate Diet Column -->
+                <div class = "col-md-4" id = "md">
+                    <h3>Moderate Diet</h3>
+                    <p>Carbs: {{ moderate_diet.carbs|floatformat:"0" }}g</p>
+                    <p>Protein: {{ moderate_diet.protein|floatformat:"0" }}g</p>
+                    <p>Fat: {{ moderate_diet.fat|floatformat:"0" }}g</p> 
+                </div>
+                
+                <!-- Lower Carb Diet Column -->
+                <div class = "col-md-4" id = "lc">
+                    <h3>Low Carb Diet</h3>
+                    <p>Carbs: {{ lower_carb_diet.carbs|floatformat:"0" }}g</p>
+                    <p>Protein: {{ lower_carb_diet.protein|floatformat:"0" }}g</p>
+                    <p>Fat: {{ lower_carb_diet.fat|floatformat:"0" }}g</p>
+                </div>
+                
+                <!-- High Carb Diet Column -->
+                <div class = "col-md-4" id = "hc">
+                    <h3>High Carb Diet</h3>
+                    <p>Carbs: {{ high_carb_diet.carbs|floatformat:"0" }}g</p>
+                    <p>Protein: {{ high_carb_diet.protein|floatformat:"0" }}g</p>
+                    <p>Fat: {{ high_carb_diet.fat|floatformat:"0" }}g</p> 
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        window.onload = function() 
+        {
+            var resultsSection = document.getElementById('results');
+            if (resultsSection) 
+            {
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+    </script>
+
+{% endblock %}

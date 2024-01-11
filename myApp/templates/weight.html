@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+
+<link rel = "stylesheet" href = "{% static 'weightStyle.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<div class = "{% if not request.user.is_authenticated %}blur-content{% endif %}">
+<div class = "weight-section">
+<div class = "container">
+<div class = "row">
+    <div class = "col-md-6 col-sm-12 col-xs-12">
+        <div class = "tab-weight">
+            <h3>Weight Logger</h3>
+            <form method = "post">
+                {% csrf_token %}
+                <div class = "col-12 my-3">
+                    <label for = "date">Date: </label>
+                    <input type = "date" name = "date" class = "form-control" required>
+                </div>
+
+                <div class = "col-12 my-3">
+                    <label for = "weight">Weight: </label>
+                    <input type = "text" name = "weight" class = "form-control" required placeholder = "lbs">
+                </div>
+
+                <div class = "col-12 my-3">
+                    <label for = "notes">Notes: </label>
+                    <textarea name = "notes" class = "form-control" placeholder = "How you felt, etc."></textarea>
+                </div>
+
+                {% if request.user.is_authenticated %}
+                <button type = "submit" name = "btn btn-primary" action = "{% url 'home' %}">Save</button>
+                {% else %}
+                <button disabled type = "submit" name = "btn btn-primary" action = "{% url 'home' %}">Save</button>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-12" id="weight-info-section">
+        <div class="weight-info">
+            <h2>Benefits of Tracking Your Weight</h2>
+            <p>Regularly monitoring your weight helps you understand your body's changes and maintain a healthy lifestyle.</p>
+        </div>
+    
+        <div class="weight-tips">
+            <h2>Weight Tracking Tips</h2>
+            <ul>
+                <li>Consistency is key: Weigh yourself at the same time each day.</li>
+                <li>Use a reliable scale and record your weight regularly.</li>
+                <li>Look for trends over time, rather than focusing on daily fluctuations.</li>
+            </ul>
+        </div>
+    
+        <div class="weight-faq">
+            <h2>Frequently Asked Questions</h2>
+            <p><strong>How often should I weigh myself?</strong> Weighing yourself once a week is sufficient for most people.</p>
+            <p><strong>Why does my weight fluctuate?</strong> Daily fluctuations are normal and can be due to factors like hydration, meals, and exercise.</p>
+        </div>
+    </div>
+
+    <!-- Bokeh graph here -->
+    {{ div|safe }}
+
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-12 text-center">
+                <h3 class = "weight-log-heading">Weight Log</h3>
+            </div>
+        </div>
+    </div>
+    
+    <div class = "row justify-content-center weight-log-container">
+    <div class = "col-10">
+        <table class = "table table-bordered table-striped weight-log-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Weight</th>
+                        <th>Moving Average</th>
+                        <th>Overall Progress</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in weight_records_reversed %}
+                    <tr>
+                        <td>{{ record.date }}</td>
+                        <td>{{ record.weight }}</td>
+                        <td>{{ record.moving_average }}</td>
+                        <td>{{ record.total_change }}</td>
+                        <td>
+                            {% if record.notes %}
+                                <i class="fas fa-info-circle info-icon" data-notes = "{{ record.notes }}"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+{% if not request.user.is_authenticated %}
+    <div class = "blur-message">
+        <p>Must <a href = "{% url 'register' %}" class="sign-up-link">create</a> an account to access</p>
+    </div>
+{% endif %}
+
+{% endblock %}
+
+    

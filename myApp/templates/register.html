@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel = "stylesheet" href = "{% static 'authStyle.css' %}">
+</head>
+<body>
+    <div class = "auth-container">
+        <h2>Register</h2>
+
+        <form method = "post" action = "{% url 'register' %}">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class = "error">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% for field in form %}
+                <div class = "form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class = "error">
+                            {% for error in field.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type = "submit">Register</button>
+        </form>
+
+        <a href = "{% url 'login' %}">Already have an account? Login</a>
+        <a href = "{% url 'home' %}">Return to Home</a>
+    </div>
+</body>
+</html>

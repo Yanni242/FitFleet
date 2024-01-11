@@ -1,0 +1,224 @@
+/* Base Styles */
+body 
+{
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container 
+{
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0;
+}
+
+h1, h2, h3, h4 
+{
+    font-family: 'Roboto', sans-serif;
+    margin-top: 0;
+}
+
+#hero 
+{
+    background: url('gym.jpg');
+    background-size: cover;
+    padding: 150px 0;
+    color: white;
+    text-align: center;
+}
+
+#hero .container 
+{
+    text-align: center;
+}
+
+#hero h1 
+{
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+#hero p
+{
+    font-size: 1.3em;
+}
+
+/* About Section */
+#about 
+{
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+#about h2 
+{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.img-fluid 
+{
+    max-width: 100%; 
+    height: auto; 
+}
+
+#about img 
+{
+    max-width: 60%; 
+    height: auto;
+    display: block; 
+    margin: 0 auto;
+    border-radius: 15px; 
+}
+
+/* Why Join Section */
+#why-join 
+{
+    background-color: #f5f5f5;
+    padding: 40px 0;
+}
+
+#why-join h2 
+{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.why-item 
+{
+    text-align: center;
+    padding: 15px;
+}
+
+.why-item h3 
+{
+    color: #004d99; 
+    margin-bottom: 10px;
+}
+
+.why-item p 
+{
+    font-size: 1em;
+}
+
+/* Features Section */
+#features 
+{
+    padding: 40px 0;
+}
+
+#features h2 
+{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em; 
+}
+
+#features a 
+{
+    color: #333; 
+    text-decoration: none; 
+    transition: color 0.3s; 
+}
+
+#features a:hover 
+{
+    color: #555; 
+}
+
+.feature-box 
+{
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.feature-box .icon 
+{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+/* Newsletter Section */
+#newsletter 
+{
+    padding: 60px 0;
+    background-color: #004d99;
+    color: white;
+    text-align: center;
+}
+  
+#newsletter form 
+{
+    margin-top: 20px;
+}
+  
+#newsletter input[type=email] 
+{
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.cta-button 
+{
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover 
+{
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer 
+{
+    padding: 60px 0;
+    background-color: #333;
+    color: white;
+}
+
+footer .btn-back-top 
+{
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+footer .btn-back-top:hover 
+{
+    background-color: #0056b3; 
+}
+
+footer p 
+{
+    margin: 0;
+}
+
+.text-center 
+{
+    text-align: center;
+}
+
+.text-right 
+{
+    text-align: right;
+}
+  
+  

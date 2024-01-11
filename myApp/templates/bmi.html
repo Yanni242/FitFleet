@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+
+<link rel = "stylesheet" href = "{% static 'bmiStyle.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class = "bmi-section">
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-md-6 col-sm-12 col-xs-12">
+                <div class = "tab-bmi">
+                    <h3>BMI Calculator</h3>
+                    <div class = "tab">
+                        <button class = "tablinks" onclick = "openUnit(event, 'metric')">Metric units</button>
+                        <button class = "tablinks" onclick = "openUnit(event, 'imperial')">Imperial units</button>
+                    </div>
+
+            <div class = "tabcontent" id = "metric">
+                <form method = "post">
+                    {% csrf_token %}
+                    <div class = "col-12 my-3">
+                        <label for = "">Weight: </label>
+                        <input type = "text" name = "weight-metric" class = "form-control" required placeholder = "kg">
+                    </div>
+
+                    <div class = "col-12 my-3">
+                        <label for = "">Height: </label>
+                        <input type = "text" name = "height-metric" class = "form-control" required placeholder = "cm">
+                    </div>
+
+                    {% if request.user.is_authenticated %}
+                    <div class = "form-check my-4">
+                        <input class = "form-check-input" checked = "checked" name = "save" value = "on" type = "checkbox">
+                        <label for = "" class = "form-check-label"> Save Result </label>
+                    </div>
+                    {% else %}
+                    <div class = "form-check my-4">
+                        <input disabled class = "form-check-input" checked = "checked" name = "save" value = "on" type = "checkbox">
+                        <label for = "" class = "form-check-label"> Save Result </label>
+                    </div>
+                    {% endif %}
+
+                    <button type = "submit" name = "btn btn-primary" action = "{%url 'home' %}">Calculate</button>
+                </form>    
+            </div>
+
+            <div class = "tabcontent" id = "imperial">
+                <form method = "post">
+                    {% csrf_token %}
+                    <div class = "col-12 my-3">
+                        <label for = "">Weight: </label>
+                        <input type = "text" name = "weight-imperial" class = "form-control" required placeholder = "lbs">
+                    </div>
+
+                    <div class = "col-12 my-3">
+                        <label for = "">Height: </label>
+                        <div class = "input-group">
+                            <input type = "text" name = "feet" placeholder = "feet" class = "form-control">
+                            <input type = "text" name = "inches" placeholder = "inches" class = "form-control">
+                        </div>
+                    </div>
+
+                    {% if request.user.is_authenticated %}
+                    <div class = "form-check my-4">
+                        <input class = "form-check-input" checked = "checked" name = "save" value = "on" type = "checkbox">
+                        <label for = "" class = "form-check-label"> Save Result </label>
+                    </div>
+                    {% else %}
+                    <div class = "form-check my-4">
+                        <input disabled class = "form-check-input" checked = "checked" name = "save" value = "on" type = "checkbox">
+                        <label for = "" class = "form-check-label"> Save Result </label>
+                    </div>
+                    {% endif %}
+
+                    <button type = "submit" name = "btn btn-primary" action = "{%url 'home' %}">Calculate</button>
+                </form>
+                </div>
+
+                {% if bmi %}
+                    <div class="bmi-results-box">
+                        <h2 class="results-heading">YOUR BMI</h2>
+                        <div class="bmi-result">
+                            <span class="bmi-value {{ state|lower }}">{{ bmi }}</span>
+                            <span class="bmi-state">{{ state }}</span>
+                        </div>
+                        <div class = "progress">
+                            <div class = "progress-bar bg-danger" style = "width:25%">
+                            Underweight
+                            </div>
+                            <div class = "progress-bar bg-success" style = "width:25%">
+                            Normal
+                            </div>
+                            <div class = "progress-bar bg-warning" style = "width:25%">
+                            Overweight
+                            </div>
+                            <div class = "progress-bar bg-danger" style = "width:25%">
+                            Obesity
+                            </div>
+                        </div>
+                        <div class = "progress-labels">
+                            <span class = "label">&lt; 18.5</span>
+                            <span class = "label">18.5 - 24.9</span>
+                            <span class = "label">25 - 29.9</span>
+                            <span class = "label">30+</span>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class = "col-md-6 col-sm-12 col-xs-12" id = "info-section">
+            <div class = "bmi-info">
+                <h2>Understanding BMI</h2>
+                <p>BMI, or Body Mass Index, is a measure of body fat based on your weight in relation to your height. It's an easy way to gauge whether you're underweight, normal weight, overweight, or obese.</p>
+            </div>
+        
+            <div class = "health-tips">
+                <h2>Health Tips</h2>
+                <ul>
+                    <li>Maintain a balanced diet with a variety of nutrients.</li>
+                    <li>Regular exercise is key to a healthy lifestyle.</li>
+                    <li>Stay hydrated and get adequate sleep every day.</li>
+                </ul>
+            </div>
+        
+            <div class = "faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <p><strong>What is a healthy BMI range?</strong> A BMI between 18.5 and 24.9 is considered normal.</p>
+                <p><strong>Can BMI be used for all body types?</strong> BMI doesn't distinguish between muscle and fat. So, it might not be accurate for athletes or older people.</p>
+            </div>
+        </div>
+
+        </div>
+
+        {{div|safe}}
+
+    </div>
+
+</div>
+
+
+{% endblock %}

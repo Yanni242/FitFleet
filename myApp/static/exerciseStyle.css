@@ -1,0 +1,140 @@
+/* Layout for Exercise Containers */
+.exercise-container 
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Dropdown Styling */
+.dropdown 
+{
+    position: relative;
+}
+
+.dropdown span 
+{
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    display: block;
+    transition: all 0.3s ease;
+    font-size: 48px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100px;
+}
+
+.dropdown span:hover 
+{
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content 
+{
+    display: none;
+    background-color: white;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+img
+{
+    max-width: 100%;
+    padding: 10px; 
+    height: auto;
+    display: block; 
+    margin: 0 auto;
+    border-radius: 15px; 
+}
+
+/* Button Styling */
+.exercise-button 
+{
+    background-color: #ffffff;
+    color: #007bff;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 4px;
+    display: block;
+    text-align: left;
+    width: calc(100% - 30px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.exercise-button:hover 
+{
+    background-color: #e7e7e7;
+}
+
+/* Modal Styling */
+.modal 
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.modal-content 
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e8f4f8;
+    padding: 20px;
+    width: 70%;
+    max-width: 640px; 
+    text-align: center;
+}
+
+/* Video Container Styling */
+.video-container 
+{
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%; 
+    height: 0;
+}
+
+#exerciseVideoIframe 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.close 
+{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+}
+
+#exerciseName 
+{
+    color: #0056b3;
+}
+
+#exerciseDescription, #exerciseTips 
+{
+    color: #333;
+}
